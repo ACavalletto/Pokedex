@@ -2,13 +2,20 @@ const express = require('express')
 const app = express()
 const port = 3000
 const methodOverride = require("method-override")
+const morgan = require('morgan')
 const pokemon = require('./models/pokemon')
 
 app.use(express.urlencoded({ extended: false }))
 app.use(methodOverride("_method"))
+app.use(morgan('dev'))
+app.use("/public", express.static("/public"));
 
 app.get("/", (req, res) => {
     res.render("index.ejs", {pokemon:pokemon})
+})
+
+app.get("/show", (req, res) => {
+    res.send(pokemon)
 })
 
 app.get("/new", (req, res) => {
@@ -20,19 +27,28 @@ app.get("/:id/edit", (req, res) => {
     res.render("edit.ejs", {stats, id: req.params.id})
 })
 
-app.get("/:id", (req, res) => {
-    const { id, name, img, type, stats, moves, damages, misc } = pokemon[req.params.id];
-    res.render("show.ejs", {id,name,img, type, stats, moves, damages, misc, index:req.params.id})
+app.get("/:index", (req, res) => {
+    const { id, name, img, type, stats, moves, damages, misc } = pokemon[parseInt(req.params.index)-1];
+    res.render("show.ejs", {id, name, img, type, stats, index:req.params.index})
 })
 
+app.delete("/:index", (req, res) => {
+    pokemon.splice(req.params.index, 1)
+    res.redirect('/')
+})
+
+
 app.post("/", (req, res) => {
-    pokemon.push(req.body)
+    const { id, name, img, type, hp, attack, defense, spattack, spdefense, speed } = req.body
+    let stats = {hp, attack, defense, spattack, spdefense, speed}
+    let newPokemon = {id, name, img, type, stats}
+    pokemon.push(newPokemon)
     res.redirect("/")
 })
 
-app.put("/:id", (req, res) => {
-    pokemon[req.params.id].stats = req.body
-    res.redirect(`/${req.params.id}`)
+app.put("/:index", (req, res) => {
+    pokemon[req.params.index].stats = req.body
+    res.redirect(`/${req.params.index}`)
 })
 
 app.listen(port, () => {
