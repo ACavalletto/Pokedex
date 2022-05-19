@@ -7,8 +7,8 @@ const pokemon = require('./models/pokemon')
 
 app.use(express.urlencoded({ extended: false }))
 app.use(methodOverride("_method"))
-app.use(morgan('dev'))
-app.use("/public", express.static("/public"));
+// app.use(morgan('dev'))
+app.use("/public", express.static("public"));
 
 app.get("/", (req, res) => {
     res.render("index.ejs", {pokemon:pokemon})

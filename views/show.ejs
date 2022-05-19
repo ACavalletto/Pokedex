@@ -2,16 +2,22 @@
 <html lang="en">
 <head>
 <%- include("./partials/header.ejs") %> 
+<link rel="stylesheet" href="/public/show-style.css"
 </head>
 <body>
     <!-- variabels: id,name,img, type, stats, moves, damages, misc -->
     <div class="header">
         <h1>Pokedex</h1>
-        <a href="/">Back</a>
-        <a href="/new">Add Pokemon</a>
+        <a href="/">
+            <button>BACK</button>
+        </a>
+        <a href="/new">
+            <button>ADD POKEMON</button>
+        </a>
     </div>
+    <div class="info">
     <div class="idCard">
-        <h3><%=name%></h3><br>
+        <h3><%=name%></h3>
         <h4><%=id%> </h4>
         <img src="<%=img%>">
     </div>
@@ -29,6 +35,7 @@
     <a href="/<%=index%>/edit">
         <button class="edit">Edit</button>
     </a>
+    </div>
     </div>
 </body>
 </html>
