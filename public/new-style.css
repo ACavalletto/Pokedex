@@ -1,0 +1,41 @@
+body{
+    background-color:#be222f;
+}
+form{
+    background-color: #1d3557;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 18px;
+    display: flex;
+    align-content: space-between;
+    flex-direction: column;
+    width: 30%;
+    margin: 50px auto;
+    color: #f1faee;
+    text-align: center;
+    padding: 10px;
+    letter-spacing: 2px;
+}
+form #text{
+    color: #f1faee;
+}
+form input{
+    border: 2.5px outset #be222f;
+    margin: 10px 10px;
+    background-color: #8bdde0;
+    color: #be222f;
+    outline: none;
+    margin-top: 0px;
+}
+
+form input[type="submit"] {
+    background-color: #f1faee;
+    border: 3px outset #8bdde0;
+}
+form input[type="submit"]:hover {
+    border: 3px outset #8bdde0;
+    background-color: #be222f;
+    color: #f1faee;
+    border: 2px outset #8fcacc;
+    transition: background .5s, color 2s;
+    transition-timing-function: cubic-bezier();
+}

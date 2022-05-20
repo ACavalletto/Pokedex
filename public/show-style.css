@@ -103,9 +103,39 @@ body{
 }
 
 @media (max-width: 767px) {
+    .header a button{
+        padding: 2px 5px 2px 5px;
+    }
     .info {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        background-color: #1d3557;
+        margin-top:0;
+        padding-left: 10px;
+    }
+    .idCard{
+        width: 90%;
+        margin-bottom:0;
+    }
+    .idCard img{
+        margin-left: 40px;
+    }
+
+    .typeCard{
+        height: 50px;
+        width: 90%;
+    }
+    .typeCard h4{
+        padding-top: 5px;
+        margin-bottom: 0;
+        margin-top:0;
+        height: 20px;
+    }
+    .typeCard p{
+        margin-top: 0;
+    }
+    .statsCard{
+        width: 90%;
     }
 }
