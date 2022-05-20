@@ -47,7 +47,8 @@ app.post("/", (req, res) => {
 })
 
 app.put("/:index", (req, res) => {
-    pokemon[req.params.index].stats = req.body
+    const {hp, attack, defense, spattack, spdefense, speed} = req.body
+    pokemon[req.params.index-1].stats = {hp, attack, defense, spattack, spdefense, speed}
     res.redirect(`/${req.params.index}`)
 })
 
