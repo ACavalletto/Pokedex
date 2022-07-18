@@ -23,7 +23,7 @@ app.get("/new", (req, res) => {
 })
 
 app.get("/:id/edit", (req, res) => {
-    const { stats } = pokemon[req.params.id]
+    const { stats} = pokemon[req.params.id]
     res.render("edit.ejs", {stats, id: req.params.id})
 })
 
@@ -55,3 +55,5 @@ app.put("/:index", (req, res) => {
 app.listen(port, () => {
     console.log("Listening on port: " + port)
 })
+
+module.exports = app;
