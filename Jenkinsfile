@@ -4,14 +4,20 @@ pipeline{
 
     stages {
         stage('Build') {
+            agent {
+                docker {
+                    image 'acavalletto/pokedex-app:3000'
+                    reuseNode true
+                }
+            }
             steps {
-                sh 'npm install'
+                sh 'acavalletto/pokedex-app --version'
             }
         }
-        stage('Test'){
-            steps {
-                sh 'npm test'
-            }
-        }
+        // stage('Test'){
+        //     steps {
+        //         sh 'npm test'
+        //     }
+        // }
     }
 }
