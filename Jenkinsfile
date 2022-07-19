@@ -6,17 +6,17 @@ pipeline{
         stage('Build') {
             agent {
                 docker {
-                    image 'acavalletto/pokedex-app:3000'
+                    image 'node:acavalletto/pokedex-app'
                 }
             }
             steps {
                 sh 'npm install'
             }
         }
-        // stage('Test'){
-        //     steps {
-        //         sh 'npm test'
-        //     }
-        // }
+        stage('Test'){
+            steps {
+                sh 'node --version'
+            }
+        }
     }
 }
