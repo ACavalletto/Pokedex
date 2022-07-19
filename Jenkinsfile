@@ -7,7 +7,6 @@ pipeline{
             agent {
                 docker {
                     image 'acavalletto/pokedex-app:3000'
-                    reuseNode true
                 }
             }
             steps {
