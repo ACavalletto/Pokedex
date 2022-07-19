@@ -10,7 +10,7 @@ pipeline{
                 }
             }
             steps {
-                sh 'acavalletto/pokedex-app --version'
+                sh 'npm install'
             }
         }
         // stage('Test'){
