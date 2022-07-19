@@ -1,22 +1,23 @@
 pipeline{
-    agent any
-    tools {nodejs "node"}
+    agent {
+        docker{
+            image 'node:acavalletto-pokedex-app'
+            args '-p 3000:3000'
+        }
+    }
+    // tools {nodejs "node"}
 
     stages {
         stage('Build') {
-            agent {
-                docker {
-                    image 'node:acavalletto/pokedex-app'
-                }
-            }
             steps {
                 sh 'npm install'
+                echo 'Build Success'
             }
         }
-        stage('Test'){
-            steps {
-                sh 'node --version'
-            }
-        }
+        // stage('Test'){
+        //     steps {
+
+        //     }
+        // }
     }
 }
