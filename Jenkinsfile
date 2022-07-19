@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker { 
-            image 'acavalletto/pokedex-app'
+            image 'node:lts-bullseye-slim'
             args '-p 3000:3000'
         }
     }
